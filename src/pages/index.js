@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
@@ -6,14 +6,27 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-class BlogIndex extends React.Component {
-  render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+const BlogIndex = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata.title
+  const posts = data.allMarkdownRemark.edges
+  const [darkMode, setDarkMode] = useState(false)
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode)
+  }
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
+  return (
+    <div
+      style={{
+        backgroundColor: darkMode ? "#212121" : "white",
+        height: "100vh",
+      }}
+    >
+      <Layout
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+        location={location}
+        title={siteTitle}
+      >
         <SEO
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
@@ -47,8 +60,8 @@ class BlogIndex extends React.Component {
           )
         })}
       </Layout>
-    )
-  }
+    </div>
+  )
 }
 
 export default BlogIndex
