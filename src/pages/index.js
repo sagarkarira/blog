@@ -33,6 +33,11 @@ class BlogIndex extends React.Component {
                 </Link>
               </h3>
               <small>{node.frontmatter.date}</small>
+              <p>
+                <small style={{ fontWeight: "bold" }}>
+                  {node.timeToRead} min read
+                </small>
+              </p>
               <p
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
@@ -67,6 +72,7 @@ export const pageQuery = graphql`
             title
             description
           }
+          timeToRead
         }
       }
     }
