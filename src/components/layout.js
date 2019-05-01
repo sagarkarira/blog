@@ -85,9 +85,21 @@ class Layout extends React.Component {
           <div
             style={{
               display: "flex",
-              justifyContent: "flex-end",
+              justifyContent: "space-between",
+              marginBottom: rhythm(1),
             }}
           >
+            <nav
+              style={{
+                display: "grid",
+                gridGap: rhythm(1),
+                gridAutoFlow: "column",
+              }}
+            >
+              <Link to={`/`}>Home</Link>
+              <Link to={`/blog`}>Blog</Link>
+              <Link to={`/essays`}>Essays</Link>
+            </nav>
             {darkModeSwitch}
           </div>
           <header>{header}</header>
