@@ -66,26 +66,36 @@ class Layout extends React.Component {
     return (
       <div
         style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          color: darkMode ? "#eee" : "inherit",
+          color: "#424242",
+          backgroundColor: darkMode ? "#212121" : "white",
+          height: "100%",
+          minHeight: "100vh",
+          transition: "0.4s ease-in-out",
         }}
       >
         <div
           style={{
-            display: "flex",
-            justifyContent: "flex-end",
+            marginLeft: `auto`,
+            marginRight: `auto`,
+            maxWidth: rhythm(24),
+            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+            color: darkMode ? "#eee" : "inherit",
           }}
         >
-          {darkModeSwitch}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            {darkModeSwitch}
+          </div>
+          <header>{header}</header>
+          <main>{children}</main>
+          <footer>
+            © {new Date().getFullYear()}, Sagar Karira, all rights reserved
+          </footer>
         </div>
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Sagar Karira, all rights reserved
-        </footer>
       </div>
     )
   }

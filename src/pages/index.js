@@ -13,52 +13,42 @@ const BlogIndex = ({ data, location }) => {
   const [darkMode, toggleDarkMode] = useDarkMode()
 
   return (
-    <div
-      style={{
-        color: "#424242",
-        backgroundColor: darkMode ? "#212121" : "white",
-        height: "100%",
-        minHeight: "100vh",
-        transition: "0.4s ease-in-out",
-      }}
+    <Layout
+      darkMode={darkMode}
+      toggleDarkMode={toggleDarkMode}
+      location={location}
+      title={siteTitle}
     >
-      <Layout
-        darkMode={darkMode}
-        toggleDarkMode={toggleDarkMode}
-        location={location}
-        title={siteTitle}
-      >
-        <SEO
-          title="All posts"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-        />
-        <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <p>
-                <b>{node.frontmatter.date}</b> · 🕓 {node.timeToRead} min read
-              </p>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </div>
-          )
-        })}
-      </Layout>
-    </div>
+      <SEO
+        title="All posts"
+        keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+      />
+      <Bio />
+      {posts.map(({ node }) => {
+        const title = node.frontmatter.title || node.fields.slug
+        return (
+          <div key={node.fields.slug}>
+            <h3
+              style={{
+                marginBottom: rhythm(1 / 4),
+              }}
+            >
+              <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                {title}
+              </Link>
+            </h3>
+            <p>
+              <b>{node.frontmatter.date}</b> · 🕓 {node.timeToRead} min read
+            </p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: node.frontmatter.description || node.excerpt,
+              }}
+            />
+          </div>
+        )
+      })}
+    </Layout>
   )
 }
 

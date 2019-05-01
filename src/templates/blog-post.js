@@ -16,16 +16,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const [darkMode, toggleDarkMode] = useDarkMode()
 
   return (
-    <div
-      className={darkMode ? "dark-mode" : null}
-      style={{
-        color: "#424242",
-        backgroundColor: darkMode ? "#212121" : "white",
-        height: "100%",
-        minHeight: "100vh",
-        transition: "0.4s ease-in-out",
-      }}
-    >
+    <div className={darkMode ? "dark-mode" : null}>
       <Layout
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}
