@@ -62,7 +62,7 @@ class Layout extends React.Component {
           marginRight: `auto`,
           maxWidth: rhythm(24),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          color: darkMode ? "#fff" : "inherit",
+          color: darkMode ? "#eee" : "inherit",
         }}
       >
         <div
@@ -76,9 +76,7 @@ class Layout extends React.Component {
         <header>{header}</header>
         <main>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Build with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          © {new Date().getFullYear()}, Sagar Karira, all rights reserved
         </footer>
       </div>
     )

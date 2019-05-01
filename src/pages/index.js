@@ -17,8 +17,10 @@ const BlogIndex = ({ data, location }) => {
   return (
     <div
       style={{
+        color: "#424242",
         backgroundColor: darkMode ? "#212121" : "white",
         height: "100vh",
+        transition: "0.4s ease-in-out",
       }}
     >
       <Layout
@@ -45,11 +47,8 @@ const BlogIndex = ({ data, location }) => {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
               <p>
-                <small style={{ fontWeight: "bold" }}>
-                  {node.timeToRead} min read
-                </small>
+                <b>{node.frontmatter.date}</b> · 🕓 {node.timeToRead} min read
               </p>
               <p
                 dangerouslySetInnerHTML={{
