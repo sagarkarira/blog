@@ -5,21 +5,20 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import { useDarkMode } from "../utils/hooks"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
-  const [darkMode, setDarkMode] = useState(false)
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-  }
+  const [darkMode, toggleDarkMode] = useDarkMode()
 
   return (
     <div
       style={{
         color: "#424242",
         backgroundColor: darkMode ? "#212121" : "white",
-        height: "100vh",
+        height: "100%",
+        minHeight: "100vh",
         transition: "0.4s ease-in-out",
       }}
     >

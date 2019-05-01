@@ -5,15 +5,33 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import { useDarkMode } from "../utils/hooks"
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
+import "./dark-mode.css"
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
+const BlogPostTemplate = ({ data, pageContext, location }) => {
+  const post = data.markdownRemark
+  const siteTitle = data.site.siteMetadata.title
+  const { previous, next } = pageContext
+  const [darkMode, toggleDarkMode] = useDarkMode()
+
+  return (
+    <div
+      className={darkMode ? "dark-mode" : null}
+      style={{
+        color: "#424242",
+        backgroundColor: darkMode ? "#212121" : "white",
+        height: "100%",
+        minHeight: "100vh",
+        transition: "0.4s ease-in-out",
+      }}
+    >
+      <Layout
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+        location={location}
+        title={siteTitle}
+      >
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
@@ -61,8 +79,8 @@ class BlogPostTemplate extends React.Component {
           </li>
         </ul>
       </Layout>
-    )
-  }
+    </div>
+  )
 }
 
 export default BlogPostTemplate

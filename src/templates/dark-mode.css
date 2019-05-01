@@ -1,0 +1,8 @@
+.dark-mode hr {
+  background: #eee;
+}
+
+.dark-mode blockquote {
+  color: #eee;
+  border-color: #eee;
+}
