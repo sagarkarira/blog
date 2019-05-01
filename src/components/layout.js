@@ -10,7 +10,15 @@ class Layout extends React.Component {
     const rootPath = `${__PATH_PREFIX__}/`
     let header
     const darkModeSwitch = (
-      <Switch onChange={toggleDarkMode} checked={darkMode} />
+      <Switch
+        checkedIcon={<div style={{ textAlign: "center" }}>🌙</div>}
+        uncheckedIcon={<div style={{ textAlign: "center" }}>☀️</div>}
+        onHandleColor="#ddd"
+        offColor="#ddd"
+        onColor="#424242"
+        onChange={toggleDarkMode}
+        checked={darkMode}
+      />
     )
 
     if (location.pathname === rootPath) {
